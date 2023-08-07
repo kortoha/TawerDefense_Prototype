@@ -12,6 +12,11 @@ public class RestartOfGame : MonoBehaviour
     [SerializeField] private GameObject _brightening;
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _soundButton;
+    [SerializeField] private GameObject _scorePanel;
+    [SerializeField] private GameObject _interactionPanel;
+    [SerializeField] private GameObject _interactionButton;
+    [SerializeField] private GameObject _coinsScore;
+
 
     public int sceneCount;
 
@@ -24,13 +29,20 @@ public class RestartOfGame : MonoBehaviour
             _cameraAnimator.SetTrigger(CAMERA_DEFEAT_MOD);
             _restartButton.SetActive(true);
             _pauseButton.SetActive(false);
+            _coinsScore.SetActive(false);
+            _interactionPanel.SetActive(false);
+            _interactionButton.SetActive(false);
+            _scorePanel.SetActive(true);
         }
     }
 
-    public virtual void Restart()
+    public void Restart()
     {
         _soundButton.SetActive(false);
+        _interactionPanel.SetActive(false);
+        _interactionButton.SetActive(false);
         _brightening.SetActive(true);
+        _scorePanel.SetActive(false);
         _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);
 
         Invoke("LoadScene", _timeToRestart);

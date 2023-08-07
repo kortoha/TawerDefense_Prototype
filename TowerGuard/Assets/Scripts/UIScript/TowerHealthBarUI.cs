@@ -14,17 +14,21 @@ public class TowerHealthBarUI : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        float healthLavel = _mainTower.towersHealth / MainTower.Instance.maxHealth;
-        _barImage.fillAmount = healthLavel;
+        float healthLevel = _mainTower.towersHealth / MainTower.Instance.maxHealth;
 
-        if (healthLavel <= 0.7f)
-        {
-            _barImage.color = Color.yellow;
-        }
-
-        if (healthLavel <= 0.5f)
+        if (healthLevel <= 0.5f)
         {
             _barImage.color = Color.red;
         }
+        else if (healthLevel <= 0.7f)
+        {
+            _barImage.color = Color.yellow;
+        }
+        else
+        {
+            _barImage.color = Color.green;
+        }
+
+        _barImage.fillAmount = healthLevel;
     }
 }

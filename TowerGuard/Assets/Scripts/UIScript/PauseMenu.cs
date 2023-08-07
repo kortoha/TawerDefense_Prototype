@@ -14,6 +14,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _brightening;
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _soundButton;
+    [SerializeField] private GameObject _scorePanel;
+    [SerializeField] private GameObject _interactionPanel;
+    [SerializeField] private GameObject _interactionButton;
+    [SerializeField] private GameObject _coinsScore;
 
 
 
@@ -30,6 +34,9 @@ public class PauseMenu : MonoBehaviour
             _restartButton.SetActive(true);
             _backgroundFade.SetActive(true);
             _gameInteraction.SetActive(false);
+            _interactionPanel.SetActive(false);
+            _interactionButton.SetActive(false);
+            _coinsScore.SetActive(false);
             Time.timeScale = 0;
         }
         
@@ -39,6 +46,9 @@ public class PauseMenu : MonoBehaviour
             _restartButton.SetActive(false);
             _backgroundFade.SetActive(false);
             _gameInteraction.SetActive(true);
+            _interactionPanel.SetActive(true);
+            _interactionButton.SetActive(true);
+            _coinsScore.SetActive(true);
             Time.timeScale = 1;
         }
     }
@@ -51,8 +61,12 @@ public class PauseMenu : MonoBehaviour
             _menuPanel.SetActive(false);
             _backgroundFade.SetActive(false);
             _towersHealthBar.SetActive(false);
+            _scorePanel.SetActive(false);
             _soundButton.SetActive(false);
             _pauseButton.SetActive(false);
+            _interactionPanel.SetActive(false);
+            _interactionButton.SetActive(false);
+            _coinsScore.SetActive(false);
             MainTower.Instance.TowerDestroy();
             Invoke("LoadScene", _timeToRestart);
             _brightening.SetActive(true);

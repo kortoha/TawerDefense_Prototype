@@ -14,8 +14,11 @@ public class GoblinsDamage : MonoBehaviour
 
     public bool isAttacking { get; private set; }
     public float goblinsHealth = 100, maxGoblinsHealt = 100;
+
     private float _attackInterval = 1f;
-    private float _timeToDestroySelf = 15f;
+    private float _timeToDestroySelf = 5f;
+    private bool _isScoreUpOnce = false;
+    private int _deathMoney = 1;
 
 
     private void Start()
@@ -65,6 +68,15 @@ public class GoblinsDamage : MonoBehaviour
 
             if (goblinsHealth <= 0)
             {
+                _collider.enabled = false;
+
+                if (!_isScoreUpOnce)
+                {
+                    ScoreManager.Instance.IncreaseScore();
+                    _isScoreUpOnce = true;
+
+                    EarningMoney.Instance.MakeMoney(_deathMoney);
+                }
                 StartCoroutine(GoblinsDeath());
             }
         }
@@ -83,10 +95,9 @@ public class GoblinsDamage : MonoBehaviour
     {
         _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
         StopAttack();
-        _collider.enabled = false;
         yield return new WaitForSeconds(_timeToDestroySelf);
         Destroy(gameObject);
-        
+
     }
 
     private void OnDestroy()
