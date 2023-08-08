@@ -30,9 +30,9 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
-    public void IncreaseScore()
+    public void IncreaseScore(int scoreCount)
     {
-        score++;
+        score += scoreCount;
         if (score > bestScore)
         {
             bestScore = score;

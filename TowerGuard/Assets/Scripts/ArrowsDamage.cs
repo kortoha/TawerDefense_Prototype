@@ -15,7 +15,21 @@ public class ArrowsDamage : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer(ENEMY_LAYER))
         {
             GoblinsDamage goblinDamage = other.gameObject.GetComponent<GoblinsDamage>();
-            _setDamage = StartCoroutine(SetDamage(_attackInterval, goblinDamage));
+            SpiderDamage spiderDamage = other.gameObject.GetComponent<SpiderDamage>();
+            MinotaurusDamage minotaurusDamage = other.gameObject.GetComponent<MinotaurusDamage>();
+
+            if (goblinDamage != null)
+            {
+                _setDamage = StartCoroutine(SetDamage(_attackInterval, goblinDamage));
+            }
+            else if (spiderDamage != null)
+            {
+                _setDamage = StartCoroutine(SetDamage(_attackInterval, spiderDamage));
+            }
+            else if (minotaurusDamage != null)
+            {
+                _setDamage = StartCoroutine(SetDamage(_attackInterval, minotaurusDamage));
+            }
         }
     }
 
@@ -27,13 +41,13 @@ public class ArrowsDamage : MonoBehaviour
         }
     }
 
-    public IEnumerator SetDamage(float attackInterval, GoblinsDamage goblin)
+    public IEnumerator SetDamage(float attackInterval, EnemyDamage enemy)
     {
         while (MainTower.Instance != null)
         {
-            if (goblin != null)
+            if (enemy != null)
             {
-                goblin.TakeDamage(_damage);
+                enemy.TakeDamage(_damage);
             }
             yield return new WaitForSeconds(attackInterval);
         }

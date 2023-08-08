@@ -96,6 +96,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2957968737491535212, guid: 44007505a31240945adb545c9eca222d,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6703386933043369991, guid: 44007505a31240945adb545c9eca222d,
         type: 3}
       propertyPath: _goblinsDamage
@@ -292,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 6160735193164605894, guid: 3e745bc3d441ca24f9c2b8dcd76de08c,
         type: 3}
       propertyPath: m_Speed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6160735193164605894, guid: 3e745bc3d441ca24f9c2b8dcd76de08c,
         type: 3}
@@ -722,5 +727,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
