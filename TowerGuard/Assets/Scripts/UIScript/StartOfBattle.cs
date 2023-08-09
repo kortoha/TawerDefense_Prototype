@@ -16,7 +16,7 @@ public class StartOfBattle : MonoBehaviour
     [SerializeField] private GameObject _panel;
     [SerializeField] private Animator _camerasAnimator;
     [SerializeField] private GameObject _soundButton;
-    [SerializeField] private GameObject _interactionButton;
+    [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private GameObject _coinsScore;
 
 
@@ -28,7 +28,7 @@ public class StartOfBattle : MonoBehaviour
         _gameInteraction.SetActive(true);
         _coinsScore.SetActive(true);
         _soundButton.SetActive(true);
-        _interactionButton.SetActive(true);
+        _interactionPanel.SetActive(true);
 
         foreach (var item in _enemySpawner)
         {

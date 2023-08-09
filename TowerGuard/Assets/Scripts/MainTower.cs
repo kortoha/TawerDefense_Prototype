@@ -5,7 +5,8 @@ public class MainTower : MonoBehaviour
 {
     [SerializeField] private GameObject _exploud;
 
-    [NonSerialized] public bool _isTowerStay = true;
+    [NonSerialized] public bool isTowerStay = true;
+    [NonSerialized] public bool isTowerHasSheald = false;
 
     public static MainTower Instance { get; private set; }
 
@@ -27,10 +28,17 @@ public class MainTower : MonoBehaviour
 
     public float TakeDamage(float damage)
     {
-        towersHealth -= damage;
-        if (towersHealth <= 0)
+        if (!isTowerHasSheald)
         {
-            TowerDestroy();
+            towersHealth -= damage;
+            if (towersHealth <= 0)
+            {
+                TowerDestroy();
+            }
+        }
+        else
+        {
+            damage = 0;
         }
         return towersHealth;
     }
@@ -38,7 +46,7 @@ public class MainTower : MonoBehaviour
     public void TowerDestroy()
     {
         Destroy(gameObject);
-        _isTowerStay = false;
+        isTowerStay = false;
 
         if (_exploudeInstance == null)
         {

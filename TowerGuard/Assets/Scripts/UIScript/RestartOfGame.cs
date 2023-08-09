@@ -14,7 +14,6 @@ public class RestartOfGame : MonoBehaviour
     [SerializeField] private GameObject _soundButton;
     [SerializeField] private GameObject _scorePanel;
     [SerializeField] private GameObject _interactionPanel;
-    [SerializeField] private GameObject _interactionButton;
     [SerializeField] private GameObject _coinsScore;
 
 
@@ -31,7 +30,6 @@ public class RestartOfGame : MonoBehaviour
             _pauseButton.SetActive(false);
             _coinsScore.SetActive(false);
             _interactionPanel.SetActive(false);
-            _interactionButton.SetActive(false);
             _scorePanel.SetActive(true);
         }
     }
@@ -40,7 +38,6 @@ public class RestartOfGame : MonoBehaviour
     {
         _soundButton.SetActive(false);
         _interactionPanel.SetActive(false);
-        _interactionButton.SetActive(false);
         _brightening.SetActive(true);
         _scorePanel.SetActive(false);
         _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);

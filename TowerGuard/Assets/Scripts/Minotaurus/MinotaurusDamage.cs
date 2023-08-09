@@ -52,6 +52,8 @@ public class MinotaurusDamage : EnemyDamage
 
     public new IEnumerator SetDamage(float attackInterval, MainTower mainTower)
     {
+        _minotaurusMovement.LookAtTower();
+
         isAttacking = true;
         while (mainTower != null && health > 0)
         {

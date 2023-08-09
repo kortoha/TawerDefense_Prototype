@@ -38,13 +38,13 @@ public class MinotaurusMovement : EnemyMovement
 
         if (_minotaurusDamage.health <= 0)
         {
-            _minotaurusNavMeshAgent.destination = transform.position;
+            _minotaurusNavMeshAgent.destination = _currentPosition;
         }
 
 
         if (MainTower.Instance == null)
         {
-            _minotaurusNavMeshAgent.destination = transform.position;
+            _minotaurusNavMeshAgent.destination = _currentPosition;
             RestingState();
         }
         else
@@ -62,7 +62,7 @@ public class MinotaurusMovement : EnemyMovement
         if (!_hasReachedTarget && _minotaurusNavMeshAgent.pathStatus == NavMeshPathStatus.PathPartial)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, _minotaurusNavMeshAgent.steeringTarget - transform.position, out hit, _minotaurusNavMeshAgent.radius, NavMesh.AllAreas))
+            if (Physics.Raycast(_currentPosition, _minotaurusNavMeshAgent.steeringTarget - _currentPosition, out hit, _minotaurusNavMeshAgent.radius, NavMesh.AllAreas))
             {
                 var obstacleMinotaurus = hit.collider.GetComponent<MinotaurusMovement>();
                 if (obstacleMinotaurus != null)
@@ -110,14 +110,5 @@ public class MinotaurusMovement : EnemyMovement
     public override void SetMovementArea(Collider movementArea)
     {
         _movementArea = movementArea;
-    }
-
-    public override Vector3 GetRandomPointInArea(Bounds bounds)
-    {
-        return new Vector3(
-            UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-            bounds.center.y,
-            UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
-        );
     }
 }

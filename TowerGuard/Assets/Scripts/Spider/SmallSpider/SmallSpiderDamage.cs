@@ -1,34 +1,34 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Animations;
+using System.Collections;
+using System;
 
-public class GoblinsDamage : EnemyDamage
+public class SmallSpiderDamage : EnemyDamage
 {
-    [SerializeField] private float _goblinsDamage = 20;
+    [SerializeField] private float _smallSpiderDamage = 5;
 
-    private GoblinsMovement _goblinsMovement;
-    private Animator _animator;
+    [NonSerialized] public bool isScoreUpOnce = false;
+
+    private SpiderMovement _spiderMovement;
     private Collider _collider;
 
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public float health = 100;
-    public float maxGoblinsHealt = 100;
+    public float health = 50;
+    public float maxSpiderHealt = 50;
 
-    private float _attackInterval = 1f;
+    private float _attackInterval = 0.3f;
     private float _timeToDestroySelf = 5f;
-    private bool _isScoreUpOnce = false;
     private int _deathMoney = 1;
     private int _deathScoreCount = 1;
 
 
     private void Start()
     {
-        _goblinsMovement = GetComponent<GoblinsMovement>();
+        _spiderMovement = GetComponent<SpiderMovement>();
         _collider = GetComponent<Collider>();
-        _goblinsMovement.ReachedTargetEvent += OnReachedTarget;
-        _goblinsMovement.RestingState += OnRestingState;
+        _spiderMovement.ReachedTargetEvent += OnReachedTarget;
+        _spiderMovement.RestingState += OnRestingState;
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class GoblinsDamage : EnemyDamage
     private void OnRestingState()
     {
         StopAttack();
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
+        _spiderMovement.ReachedTargetEvent -= OnReachedTarget;
     }
 
     private void OnReachedTarget()
@@ -52,12 +52,12 @@ public class GoblinsDamage : EnemyDamage
 
     public new IEnumerator SetDamage(float attackInterval, MainTower mainTower)
     {
-        _goblinsMovement.LookAtTower();
+        _spiderMovement.LookAtTower();
 
         isAttacking = true;
         while (mainTower != null && health > 0)
         {
-            mainTower.TakeDamage(_goblinsDamage);
+            mainTower.TakeDamage(_smallSpiderDamage);
             yield return new WaitForSeconds(attackInterval);
         }
         isAttacking = false;
@@ -74,10 +74,10 @@ public class GoblinsDamage : EnemyDamage
             {
                 _collider.enabled = false;
 
-                if (!_isScoreUpOnce)
+                if (!isScoreUpOnce)
                 {
                     ScoreManager.Instance.IncreaseScore(_deathScoreCount);
-                    _isScoreUpOnce = true;
+                    isScoreUpOnce = true;
 
                     EarningMoney.Instance.MakeMoney(_deathMoney);
                 }
@@ -97,7 +97,7 @@ public class GoblinsDamage : EnemyDamage
 
     public new IEnumerator Death()
     {
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
+        _spiderMovement.ReachedTargetEvent -= OnReachedTarget;
         StopAttack();
         yield return new WaitForSeconds(_timeToDestroySelf);
         Destroy(gameObject);
@@ -106,7 +106,7 @@ public class GoblinsDamage : EnemyDamage
 
     private void OnDestroy()
     {
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
-        _goblinsMovement.RestingState -= OnRestingState;
+        _spiderMovement.ReachedTargetEvent -= OnReachedTarget;
+        _spiderMovement.RestingState -= OnRestingState;
     }
 }

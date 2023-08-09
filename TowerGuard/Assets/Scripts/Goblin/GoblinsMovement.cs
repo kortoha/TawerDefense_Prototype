@@ -37,13 +37,13 @@ public class GoblinsMovement : EnemyMovement
 
         if(_goblinsDamage.health <= 0)
         {
-            _goblinsNavMeshAgent.destination = transform.position;
+            _goblinsNavMeshAgent.destination = _currentPosition;
         }
 
 
         if (MainTower.Instance == null)
         {
-            _goblinsNavMeshAgent.destination = transform.position;
+            _goblinsNavMeshAgent.destination = _currentPosition;
             RestingState();
         }
         else
@@ -61,7 +61,7 @@ public class GoblinsMovement : EnemyMovement
         if (!_hasReachedTarget && _goblinsNavMeshAgent.pathStatus == NavMeshPathStatus.PathPartial)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, _goblinsNavMeshAgent.steeringTarget - transform.position, out hit, _goblinsNavMeshAgent.radius, NavMesh.AllAreas))
+            if (Physics.Raycast(_currentPosition, _goblinsNavMeshAgent.steeringTarget - _currentPosition, out hit, _goblinsNavMeshAgent.radius, NavMesh.AllAreas))
             {
                 var obstacleGoblin = hit.collider.GetComponent<GoblinsMovement>();
                 if (obstacleGoblin != null)
@@ -109,14 +109,5 @@ public class GoblinsMovement : EnemyMovement
     public override void SetMovementArea(Collider movementArea)
     {
         _movementArea = movementArea;
-    }
-
-    public override Vector3 GetRandomPointInArea(Bounds bounds)
-    {
-        return new Vector3(
-            UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-            bounds.center.y,
-            UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
-        );
     }
 }

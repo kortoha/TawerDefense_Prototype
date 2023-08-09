@@ -16,7 +16,9 @@ public class ArrowsDamage : MonoBehaviour
         {
             GoblinsDamage goblinDamage = other.gameObject.GetComponent<GoblinsDamage>();
             SpiderDamage spiderDamage = other.gameObject.GetComponent<SpiderDamage>();
+            SmallSpiderDamage smallSpiderDamage = other.gameObject.GetComponent<SmallSpiderDamage>();
             MinotaurusDamage minotaurusDamage = other.gameObject.GetComponent<MinotaurusDamage>();
+
 
             if (goblinDamage != null)
             {
@@ -25,6 +27,10 @@ public class ArrowsDamage : MonoBehaviour
             else if (spiderDamage != null)
             {
                 _setDamage = StartCoroutine(SetDamage(_attackInterval, spiderDamage));
+            }
+            else if (smallSpiderDamage != null)
+            {
+                _setDamage = StartCoroutine(SetDamage(_attackInterval, smallSpiderDamage));
             }
             else if (minotaurusDamage != null)
             {

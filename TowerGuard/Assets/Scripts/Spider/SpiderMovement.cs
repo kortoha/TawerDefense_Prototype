@@ -5,8 +5,10 @@ using UnityEngine.AI;
 public class SpiderMovement : EnemyMovement
 {
     [SerializeField] private float _arrivalDistance = 0.1f;
+
     [NonSerialized] public bool isMoving = false;
 
+    private SmallSpiderDamage _smallSpiderDamage;
     private SpiderDamage _spiderDamage;
     private NavMeshAgent _spiderNavMeshAgent;
     private Collider _movementArea;
@@ -24,6 +26,7 @@ public class SpiderMovement : EnemyMovement
     {
         _spiderNavMeshAgent = GetComponent<NavMeshAgent>();
         _spiderDamage = GetComponent<SpiderDamage>();
+        _smallSpiderDamage = GetComponent<SmallSpiderDamage>();
     }
 
     private void Update()
@@ -35,15 +38,19 @@ public class SpiderMovement : EnemyMovement
             MoveToTarget();
         }
 
-        if (_spiderDamage.health <= 0)
+        if (_smallSpiderDamage == null && _spiderDamage.health <= 0)
         {
-            _spiderNavMeshAgent.destination = transform.position;
+            _spiderNavMeshAgent.destination = _currentPosition;
+        }
+        else if (_smallSpiderDamage != null && _smallSpiderDamage.health <= 0)
+        {
+            _spiderNavMeshAgent.destination = _currentPosition;
         }
 
 
         if (MainTower.Instance == null)
         {
-            _spiderNavMeshAgent.destination = transform.position;
+            _spiderNavMeshAgent.destination = _currentPosition;
             RestingState();
         }
         else
@@ -61,7 +68,7 @@ public class SpiderMovement : EnemyMovement
         if (!_hasReachedTarget && _spiderNavMeshAgent.pathStatus == NavMeshPathStatus.PathPartial)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, _spiderNavMeshAgent.steeringTarget - transform.position, out hit, _spiderNavMeshAgent.radius, NavMesh.AllAreas))
+            if (Physics.Raycast(_currentPosition, _spiderNavMeshAgent.steeringTarget - _currentPosition, out hit, _spiderNavMeshAgent.radius, NavMesh.AllAreas))
             {
                 var obstacleSpider = hit.collider.GetComponent<SpiderMovement>();
                 if (obstacleSpider != null)
@@ -109,14 +116,5 @@ public class SpiderMovement : EnemyMovement
     public override void SetMovementArea(Collider movementArea)
     {
         _movementArea = movementArea;
-    }
-
-    public override Vector3 GetRandomPointInArea(Bounds bounds)
-    {
-        return new Vector3(
-            UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-            bounds.center.y,
-            UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
-        );
     }
 }

@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112e5e643c0271141bc7ec2de2fab175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _smallSpiderDamage: {fileID: 287941989958464738, guid: 3bff85c95737bb441b837049f0bc04d2,
+    type: 3}
   _arrivalDistance: 0.1
 --- !u!114 &908522407393878728
 MonoBehaviour:

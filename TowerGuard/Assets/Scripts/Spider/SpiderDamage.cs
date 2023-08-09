@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class SpiderDamage : EnemyDamage
 {
     [SerializeField] private float _spiderDamage = 50;
 
+
     private SpiderMovement _spiderMovement;
-    private Animator _animator;
     private Collider _collider;
 
     private Coroutine _enemysAttackCoroutine;
@@ -15,9 +16,9 @@ public class SpiderDamage : EnemyDamage
     public float health = 300;
     public float maxSpiderHealt = 300;
 
+    private bool _isScoreUpOnce = false;
     private float _attackInterval = 2f;
     private float _timeToDestroySelf = 5f;
-    private bool _isScoreUpOnce = false;
     private int _deathMoney = 5;
     private int _deathScoreCount = 5;
 
@@ -51,6 +52,8 @@ public class SpiderDamage : EnemyDamage
 
     public new IEnumerator SetDamage(float attackInterval, MainTower mainTower)
     {
+        _spiderMovement.LookAtTower();
+
         isAttacking = true;
         while (mainTower != null && health > 0)
         {

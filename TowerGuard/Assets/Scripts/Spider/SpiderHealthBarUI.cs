@@ -8,12 +8,12 @@ public class SpiderHealthBarUI : MonoBehaviour
 
     private void Update()
     {
-        UpdateHealthBar();
+        UpdateHealthBar(_spiderDamage);
     }
 
-    private void UpdateHealthBar()
+    private void UpdateHealthBar(SpiderDamage spiderDamage)
     {
-        float healthLavel = _spiderDamage.health / _spiderDamage.maxSpiderHealt;
+        float healthLavel = spiderDamage.health / spiderDamage.maxSpiderHealt;
 
         _barImage.fillAmount = healthLavel;
 
