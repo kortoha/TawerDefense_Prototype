@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class TowerShealdUI : MonoBehaviour
 {
     private const string NO_MONEY = "NoMoney";
-    private const string HEAL_ANIM = "IsHeal";
 
     [SerializeField] private Animator _coinsAnimator;
     [SerializeField] private Sprite _haveMoney;

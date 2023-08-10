@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowsDamage : MonoBehaviour
@@ -8,33 +9,17 @@ public class ArrowsDamage : MonoBehaviour
     [SerializeField] private float _damage = 1f;
 
     private float _attackInterval = 0.1f;
-    private Coroutine _setDamage;
+    private Dictionary<EnemyDamage, Coroutine> _activeDamageCoroutines = new Dictionary<EnemyDamage, Coroutine>();
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(ENEMY_LAYER))
         {
-            GoblinsDamage goblinDamage = other.gameObject.GetComponent<GoblinsDamage>();
-            SpiderDamage spiderDamage = other.gameObject.GetComponent<SpiderDamage>();
-            SmallSpiderDamage smallSpiderDamage = other.gameObject.GetComponent<SmallSpiderDamage>();
-            MinotaurusDamage minotaurusDamage = other.gameObject.GetComponent<MinotaurusDamage>();
+            EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
 
-
-            if (goblinDamage != null)
+            if (enemyDamage != null)
             {
-                _setDamage = StartCoroutine(SetDamage(_attackInterval, goblinDamage));
-            }
-            else if (spiderDamage != null)
-            {
-                _setDamage = StartCoroutine(SetDamage(_attackInterval, spiderDamage));
-            }
-            else if (smallSpiderDamage != null)
-            {
-                _setDamage = StartCoroutine(SetDamage(_attackInterval, smallSpiderDamage));
-            }
-            else if (minotaurusDamage != null)
-            {
-                _setDamage = StartCoroutine(SetDamage(_attackInterval, minotaurusDamage));
+                StartDamageCoroutine(enemyDamage);
             }
         }
     }
@@ -43,7 +28,31 @@ public class ArrowsDamage : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(ENEMY_LAYER))
         {
-            StopCoroutine(_setDamage);
+            EnemyDamage enemyDamage = other.gameObject.GetComponent<EnemyDamage>();
+
+            if (enemyDamage != null)
+            {
+                StopActiveDamageCoroutine(enemyDamage);
+            }
+        }
+    }
+
+    private void StartDamageCoroutine(EnemyDamage enemy)
+    {
+        if (_activeDamageCoroutines.ContainsKey(enemy))
+        {
+            StopCoroutine(_activeDamageCoroutines[enemy]);
+        }
+
+        _activeDamageCoroutines[enemy] = StartCoroutine(SetDamage(_attackInterval, enemy));
+    }
+
+    private void StopActiveDamageCoroutine(EnemyDamage enemy)
+    {
+        if (_activeDamageCoroutines.ContainsKey(enemy))
+        {
+            StopCoroutine(_activeDamageCoroutines[enemy]);
+            _activeDamageCoroutines.Remove(enemy);
         }
     }
 
