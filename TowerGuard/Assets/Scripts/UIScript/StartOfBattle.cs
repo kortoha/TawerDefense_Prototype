@@ -1,23 +1,25 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StartOfBattle : MonoBehaviour
 {
     private const string CAMERA_BATTLE_MOD = "BattleMod";
+    private const string BACK_OF_BUTTON = "Back";
 
     private int _timeToStart = 1;
 
     [SerializeField] private GameObject _towersHealthBar;
     [SerializeField] private GameObject _gameInteraction;
-    [SerializeField] private GameObject[] _enemySpawner;
+    [SerializeField] private GameObject _waveManager;
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _panel;
     [SerializeField] private Animator _camerasAnimator;
+    [SerializeField] private Animator _startButtonAnimator;
+    [SerializeField] private Animator _logoAnimator;
     [SerializeField] private GameObject _soundButton;
     [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private GameObject _coinsScore;
+    [SerializeField] private GameObject _logo;
 
 
     public void StartOfGame()
@@ -29,14 +31,16 @@ public class StartOfBattle : MonoBehaviour
         _coinsScore.SetActive(true);
         _soundButton.SetActive(true);
         _interactionPanel.SetActive(true);
-
-        foreach (var item in _enemySpawner)
-        {
-            item.SetActive(true);
-        }
-
-        _startButton.SetActive(false);
+        _waveManager.SetActive(true);
         _pauseButton.SetActive(true);
+
         _panel.SetActive(false);
+
+        _startButtonAnimator.SetTrigger(BACK_OF_BUTTON);
+        _logoAnimator.SetTrigger(BACK_OF_BUTTON);
+
+        Invoke("ButtonOff", _timeToStart);
     }
+
+    private void ButtonOff() => _startButton.SetActive(false);
 }

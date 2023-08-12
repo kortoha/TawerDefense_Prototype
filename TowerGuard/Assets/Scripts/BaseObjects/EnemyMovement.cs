@@ -1,14 +1,13 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Transform _target;
+    private Vector3 _target;
     private float _rotationSpeed = 2.0f;
 
     private void Start()
     {
-        _target = MainTower.Instance.transform;
+        _target = MainTower.Instance.transform.position;
     }
     public virtual void MoveToTarget()
     {
@@ -30,7 +29,6 @@ public class EnemyMovement : MonoBehaviour
 
     public virtual void LookAtTower()
     {
-        Vector3 targetPosition = new Vector3(_target.position.x, transform.position.y, _target.position.z);
-        transform.LookAt(targetPosition);
+        transform.LookAt(_target);
     }
 }

@@ -13,8 +13,8 @@ public class GoblinsDamage : EnemyDamage
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public float health = 100;
-    public float maxGoblinsHealt = 100;
+    public new float health = 100;
+    public new float maxHealth = 100;
 
     private float _attackInterval = 1f;
     private float _timeToDestroySelf = 5f;

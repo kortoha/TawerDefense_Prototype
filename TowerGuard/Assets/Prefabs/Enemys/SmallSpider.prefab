@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5338856498561224088}
   - component: {fileID: 9141314600378621083}
   - component: {fileID: 5666474055543255968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,10 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3c25ccf21568e40b855476659004bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 0
   _smallSpiderDamage: 5
   health: 50
-  maxSpiderHealt: 50
+  maxHealth: 50
 --- !u!114 &100968007903203940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +180,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -13,8 +13,8 @@ public class SpiderDamage : EnemyDamage
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public float health = 300;
-    public float maxSpiderHealt = 300;
+    public new float health = 300;
+    public new float maxHealth = 300;
 
     private bool _isScoreUpOnce = false;
     private float _attackInterval = 2f;

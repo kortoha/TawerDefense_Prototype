@@ -14,6 +14,7 @@ public class UltDamage : MonoBehaviour
             SpiderDamage spiderDamage = other.gameObject.GetComponent<SpiderDamage>();
             SmallSpiderDamage smallSpiderDamage = other.gameObject.GetComponent<SmallSpiderDamage>();
             MinotaurusDamage minotaurusDamage = other.gameObject.GetComponent<MinotaurusDamage>();
+            DragonDamage dragonDamage = other.gameObject.GetComponent<DragonDamage>();
 
             if (goblinDamage != null)
             {
@@ -30,6 +31,10 @@ public class UltDamage : MonoBehaviour
             else if (minotaurusDamage != null)
             {
                 minotaurusDamage.TakeDamage(_ultimateDamage);
+            }
+            else if (dragonDamage != null)
+            {
+                dragonDamage.TakeDamage(_ultimateDamage);
             }
         }
     }

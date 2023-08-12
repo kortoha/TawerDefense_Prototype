@@ -32,7 +32,11 @@ public class GameInteraction : MonoBehaviour
         if (!IsPointerOverUIObject())
         {
             Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+
+            int ignoreLayersMask = (1 << LayerMask.NameToLayer("Enemy")) | (1 << LayerMask.NameToLayer("Tower"));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~ignoreLayersMask))
             {
                 Vector3 worldPos = hit.point;
                 worldPos.y = _visualAim.transform.position.y;
@@ -63,7 +67,11 @@ public class GameInteraction : MonoBehaviour
                     Vector2 touchPos = touch.position;
 
                     Ray ray = _mainCamera.ScreenPointToRay(new Vector3(touchPos.x, touchPos.y, _mainCamera.nearClipPlane));
-                    if (Physics.Raycast(ray, out RaycastHit hit))
+
+                    int ignoreLayersMask = (1 << LayerMask.NameToLayer("Enemy")) | (1 << LayerMask.NameToLayer("Tower"));
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~ignoreLayersMask))
                     {
                         Vector3 worldPos = hit.point;
                         worldPos.y = _visualAim.transform.position.y;

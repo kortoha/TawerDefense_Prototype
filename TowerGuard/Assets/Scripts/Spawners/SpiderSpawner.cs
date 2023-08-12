@@ -9,16 +9,13 @@ public class SpiderSpawner : MonoBehaviour
 
     private bool _isSpawning = true;
 
-    private void Start()
-    {
-        StartCoroutine(SpawnEnemiesCoroutine());
-    }
+    private Coroutine _startCoroutine;
 
     private IEnumerator SpawnEnemiesCoroutine()
     {
         while (_isSpawning)
         {
-            float timeToSpawn = Random.Range(5f, 8f);
+            float timeToSpawn = 1f;
             yield return new WaitForSeconds(timeToSpawn);
 
             if (MainTower.Instance != null)
@@ -36,6 +33,16 @@ public class SpiderSpawner : MonoBehaviour
                 _isSpawning = false;
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        _startCoroutine = StartCoroutine(SpawnEnemiesCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_startCoroutine);
     }
 }
 

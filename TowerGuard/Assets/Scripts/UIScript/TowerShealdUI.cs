@@ -14,7 +14,7 @@ public class TowerShealdUI : MonoBehaviour
 
 
     private Vector3 _target;
-    private float _timeOfProtect = 7f;
+    private float _timeOfProtect = 5f;
     private int _costOfSheald = 10;
 
     private void Start()

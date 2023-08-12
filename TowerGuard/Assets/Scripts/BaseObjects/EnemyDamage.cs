@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour 
 {
-    public float baseHealth;
+    private float _health; 
 
     public IEnumerator SetDamage(float attackInterval, MainTower mainTower)
     {
@@ -11,7 +11,7 @@ public class EnemyDamage : MonoBehaviour
     }
     public virtual float TakeDamage(float damage)
     {
-        return baseHealth;
+        return _health;
     }
     public virtual void StopAttack()
     {

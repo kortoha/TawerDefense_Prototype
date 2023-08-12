@@ -1,26 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpiderHealthBarUI : MonoBehaviour
+public class SpiderHealthBarUI : BaseHealthBar
 {
     [SerializeField] private Image _barImage;
     [SerializeField] private SpiderDamage _spiderDamage;
 
     private void Update()
     {
-        UpdateHealthBar(_spiderDamage);
+        UpdateHealthBar(_spiderDamage.health, _spiderDamage.maxHealth, _barImage);
     }
 
-    private void UpdateHealthBar(SpiderDamage spiderDamage)
+    public override void UpdateHealthBar(float currentHealth, float maxHealth, Image image)
     {
-        float healthLavel = spiderDamage.health / spiderDamage.maxSpiderHealt;
-
-        _barImage.fillAmount = healthLavel;
-
-        if (healthLavel <= 0)
-        {
-            Destroy(gameObject);
-        }
-
+        base.UpdateHealthBar(currentHealth, maxHealth, image);
     }
 }

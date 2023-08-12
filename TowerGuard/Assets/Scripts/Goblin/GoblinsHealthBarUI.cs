@@ -1,26 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoblinsHealthBarUI : MonoBehaviour
+public class GoblinsHealthBarUI : BaseHealthBar
 {
     [SerializeField] private Image _barImage;
-    [SerializeField] private GoblinsDamage _goblinsDamage;
+    [SerializeField] private GoblinsDamage _goblinsDamage; 
 
     private void Update()
     {
-        UpdateHealthBar();
+        UpdateHealthBar(_goblinsDamage.health, _goblinsDamage.maxHealth, _barImage);
     }
 
-    private void UpdateHealthBar()
+    public override void UpdateHealthBar(float currentHealth, float maxHealth, Image image)
     {
-        float healthLavel = _goblinsDamage.health / _goblinsDamage.maxGoblinsHealt;
-
-        _barImage.fillAmount = healthLavel;
-
-        if (healthLavel <= 0)
-        {
-            Destroy(gameObject);
-        }
-
+        base.UpdateHealthBar(currentHealth, maxHealth, image);
     }
 }

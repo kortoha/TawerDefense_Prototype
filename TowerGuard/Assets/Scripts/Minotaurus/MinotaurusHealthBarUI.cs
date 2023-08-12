@@ -1,26 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinotaurusHealthBarUI : MonoBehaviour
+public class MinotaurusHealthBarUI : BaseHealthBar
 {
     [SerializeField] private Image _barImage;
     [SerializeField] private MinotaurusDamage _minotaurusDamage;
 
     private void Update()
     {
-        UpdateHealthBar();
+        UpdateHealthBar(_minotaurusDamage.health, _minotaurusDamage.maxHealth, _barImage);
     }
 
-    private void UpdateHealthBar()
+    public override void UpdateHealthBar(float currentHealth, float maxHealth, Image image)
     {
-        float healthLavel = _minotaurusDamage.health / _minotaurusDamage.maxMinotaurusHealt;
-
-        _barImage.fillAmount = healthLavel;
-
-        if (healthLavel <= 0)
-        {
-            Destroy(gameObject);
-        }
-
+        base.UpdateHealthBar(currentHealth, maxHealth, image);
     }
 }
