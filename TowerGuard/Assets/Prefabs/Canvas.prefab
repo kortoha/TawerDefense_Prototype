@@ -377,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3173561605923818557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1633917817, guid: 777e929cc9d1cc64b9d57c3ec2efc624, type: 3}
+  m_Sprite: {fileID: -789751612, guid: 777e929cc9d1cc64b9d57c3ec2efc624, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1238,6 +1238,7 @@ GameObject:
   - component: {fileID: 2036562771003257590}
   - component: {fileID: 5630180521886709006}
   - component: {fileID: 1037365077093257862}
+  - component: {fileID: 8419831450770958020}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1365,6 +1366,7 @@ MonoBehaviour:
   _interactionPanel: {fileID: 1796965536713344254}
   _coinsScore: {fileID: 7539981111599647807}
   _logo: {fileID: 705736980861299399}
+  _selectSound: {fileID: 0}
 --- !u!114 &1025696811575556311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,6 +1388,8 @@ MonoBehaviour:
   _scorePanel: {fileID: 4528567346488921097}
   _interactionPanel: {fileID: 1796965536713344254}
   _coinsScore: {fileID: 7539981111599647807}
+  _selectSound: {fileID: 0}
+  _towerDestroySound: {fileID: 0}
   sceneCount: 0
 --- !u!114 &5408387425732052710
 MonoBehaviour:
@@ -1411,6 +1415,7 @@ MonoBehaviour:
   _scorePanel: {fileID: 4528567346488921097}
   _interactionPanel: {fileID: 1796965536713344254}
   _coinsScore: {fileID: 7539981111599647807}
+  _selectSound: {fileID: 0}
 --- !u!114 &735205914719804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,6 +1432,7 @@ MonoBehaviour:
   _haveMoney: {fileID: -479971747, guid: 6eed1157578d6224bad0e3d8d6eff712, type: 3}
   _haveNoMoney: {fileID: -295046153, guid: 3c586199ea034ab40acb28d4aea96912, type: 3}
   _healImage: {fileID: 5343270019193375028}
+  _healSound: {fileID: 0}
 --- !u!114 &2036562771003257590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,6 +1449,7 @@ MonoBehaviour:
   _haveMoney: {fileID: 207243023, guid: 49fa1373861fdf04397840beacdcfb21, type: 3}
   _haveNoMoney: {fileID: 1038133968, guid: 038e4114e66254047ba430f8b66d0ccb, type: 3}
   _freezImage: {fileID: 6647972119947051193}
+  _freezSound: {fileID: 0}
 --- !u!114 &5630180521886709006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,6 +1467,7 @@ MonoBehaviour:
   _haveNoMoney: {fileID: -364334283, guid: 3c586199ea034ab40acb28d4aea96912, type: 3}
   _shealdImage: {fileID: 4707264850624949331}
   _sheald: {fileID: 5885942357793790759, guid: a633410a96e6c0b48b34271ce1bff2f4, type: 3}
+  _shealdAudio: {fileID: 0}
 --- !u!114 &1037365077093257862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,6 +1486,23 @@ MonoBehaviour:
   _ultImage: {fileID: 5656342015861716773}
   _ult: {fileID: 4461786567302997395, guid: 819628b219cb4454f8c624541a5a4801, type: 3}
   _ultTarget: {fileID: 0}
+  _ultSound: {fileID: 0}
+--- !u!114 &8419831450770958020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318078179235394016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6943c3a06bdd8264cac70036414d9ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainListener: {fileID: 0}
+  _buttonImage: {fileID: 5579600701213100277}
+  _soundOn: {fileID: -381939490, guid: c5d36b2dad5b14946895117d18ba1180, type: 3}
+  _soundOff: {fileID: -1725186692, guid: c5d36b2dad5b14946895117d18ba1180, type: 3}
 --- !u!1 &4384400225901025174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1633917817, guid: 777e929cc9d1cc64b9d57c3ec2efc624, type: 3}
+  m_Sprite: {fileID: -789751612, guid: 777e929cc9d1cc64b9d57c3ec2efc624, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

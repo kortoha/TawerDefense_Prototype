@@ -17,11 +17,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _scorePanel;
     [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private GameObject _coinsScore;
+    [SerializeField] private AudioSource _selectSound;
 
 
 
     private bool _isPaused = false;
-    private float _timeToRestart = 0.5f;
+    private float _timeToRestart = 0.8f;
 
     public void TogglePause()
     {
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
 
         if (_isPaused)
         {
+            _selectSound.Play();
             _menuPanel.SetActive(true);
             _restartButton.SetActive(true);
             _backgroundFade.SetActive(true);
@@ -40,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         
          if(!_isPaused)
         {
+            _selectSound.Play();
             _menuPanel.SetActive(false);
             _restartButton.SetActive(false);
             _backgroundFade.SetActive(false);
@@ -54,11 +57,12 @@ public class PauseMenu : MonoBehaviour
     {
         if(MainTower.Instance != null)
         {
+            _selectSound.Play();
             _restartButton.SetActive(false);
             _menuPanel.SetActive(false);
             _backgroundFade.SetActive(false);
             _towersHealthBar.SetActive(false);
-            _scorePanel.SetActive(false);
+            Destroy(_scorePanel);
             _soundButton.SetActive(false);
             _pauseButton.SetActive(false);
             _interactionPanel.SetActive(false);

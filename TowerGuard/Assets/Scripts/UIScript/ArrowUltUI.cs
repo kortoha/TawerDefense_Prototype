@@ -12,6 +12,7 @@ public class ArrowUltUI : MonoBehaviour
     [SerializeField] private Image _ultImage;
     [SerializeField] private GameObject _ult;
     [SerializeField] private GameObject _ultTarget;
+    [SerializeField] private AudioSource _ultSound;
 
     private bool _isUltOnScene = false;
     private float _timeToWait = 2f;
@@ -37,6 +38,7 @@ public class ArrowUltUI : MonoBehaviour
                 EarningMoney.Instance.Buing(_costOfUlt);
                 _isUltOnScene = true;
                 GameObject ult = Instantiate(_ult, _targetPosition, Quaternion.identity);
+                _ultSound.Play();
                 yield return new WaitForSeconds(_timeToWait);
                 Destroy(ult);
                 _isUltOnScene = false;            

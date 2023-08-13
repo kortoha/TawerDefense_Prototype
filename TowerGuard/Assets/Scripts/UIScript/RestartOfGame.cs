@@ -15,16 +15,19 @@ public class RestartOfGame : MonoBehaviour
     [SerializeField] private GameObject _scorePanel;
     [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private GameObject _coinsScore;
-
+    [SerializeField] private AudioSource _selectSound;
+    [SerializeField] private AudioSource _towerDestroySound;
 
     public int sceneCount;
 
-    private float _timeToRestart = 0.5f;
+    private float _timeToRestart = 0.6f;
+    private bool _isSoundPlay = false;
 
     private void Update()
     {
         if(MainTower.Instance == null)
         {
+            TowerDestroySound();
             _cameraAnimator.SetTrigger(CAMERA_DEFEAT_MOD);
             _restartButton.SetActive(true);
             _pauseButton.SetActive(false);
@@ -36,6 +39,7 @@ public class RestartOfGame : MonoBehaviour
 
     public void Restart()
     {
+        _selectSound.Play();
         _soundButton.SetActive(false);
         _interactionPanel.SetActive(false);
         _brightening.SetActive(true);
@@ -54,5 +58,14 @@ public class RestartOfGame : MonoBehaviour
     private void LoadScene()
     {
         SceneManager.LoadScene(sceneCount);
+    }
+
+    private void TowerDestroySound()
+    {
+        if (!_isSoundPlay)
+        {
+            _towerDestroySound.Play();
+            _isSoundPlay = true;
+        }
     }
 }

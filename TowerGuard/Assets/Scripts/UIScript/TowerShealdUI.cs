@@ -11,6 +11,7 @@ public class TowerShealdUI : MonoBehaviour
     [SerializeField] private Sprite _haveNoMoney;
     [SerializeField] private Image _shealdImage;
     [SerializeField] private GameObject _sheald;
+    [SerializeField] private AudioSource _shealdAudio;
 
 
     private Vector3 _target;
@@ -55,6 +56,7 @@ public class TowerShealdUI : MonoBehaviour
         if(!MainTower.Instance.isTowerHasSheald)
         {
             StartCoroutine(TowerSheald());
+            _shealdAudio.Play();
         }
     }
 

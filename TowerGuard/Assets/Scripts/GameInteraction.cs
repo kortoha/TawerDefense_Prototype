@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class GameInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject _visualAim;
+    [SerializeField] private AudioSource _touchSound;
+
     private PlayerInput _input;
     private Camera _mainCamera;
     private GameObject _currentVisualAim;
@@ -44,11 +46,13 @@ public class GameInteraction : MonoBehaviour
                 if (!_isAimCreated)
                 {
                     _currentVisualAim = Instantiate(_visualAim, worldPos, Quaternion.identity);
+                    _touchSound.Play();
                     _isAimCreated = true;
                 }
                 else
                 {
                     _currentVisualAim.transform.position = worldPos;
+                    _touchSound.Play();
                 }
             }
         }
@@ -78,12 +82,14 @@ public class GameInteraction : MonoBehaviour
 
                         if (!_isAimCreated)
                         {
+                            _touchSound.Play();
                             _currentVisualAim = Instantiate(_visualAim, worldPos, Quaternion.identity);
                             _isAimCreated = true;
                         }
                         else
                         {
                             _currentVisualAim.transform.position = worldPos;
+                            _touchSound.Play();
                         }
                     }
                 }

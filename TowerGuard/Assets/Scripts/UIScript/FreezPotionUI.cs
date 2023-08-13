@@ -10,6 +10,7 @@ public class FreezPotionUI : MonoBehaviour
     [SerializeField] private Sprite _haveMoney;
     [SerializeField] private Sprite _haveNoMoney;
     [SerializeField] private Image _freezImage;
+    [SerializeField] private AudioSource _freezSound;
 
     private float _freezingTime = 4f;
     private int _costOfFreez = 7;
@@ -28,6 +29,7 @@ public class FreezPotionUI : MonoBehaviour
             {
                 EarningMoney.Instance.Buing(_costOfFreez);
 
+                _freezSound.Play();
                 Time.timeScale = 0.5f;
 
                 yield return new WaitForSeconds(_freezingTime);
