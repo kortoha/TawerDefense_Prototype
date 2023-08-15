@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,24 @@ public class ArrowsDamage : MonoBehaviour
 {
     private const string ENEMY_LAYER = "Enemy";
 
-    [SerializeField] private float _damage = 1f;
+    private float _damage = 6f;
+
+    public static ArrowsDamage Instance { get; private set; }
 
     private float _attackInterval = 0.1f;
     private Dictionary<EnemyDamage, Coroutine> _activeDamageCoroutines = new Dictionary<EnemyDamage, Coroutine>();
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -66,5 +81,15 @@ public class ArrowsDamage : MonoBehaviour
             }
             yield return new WaitForSeconds(attackInterval);
         }
+    }
+
+    public void DeathMod()
+    {
+        _damage += 54;
+    }
+
+    public void ArrowsDestroy()
+    {
+        Destroy(gameObject);
     }
 }

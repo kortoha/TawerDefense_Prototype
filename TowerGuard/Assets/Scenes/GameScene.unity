@@ -2750,6 +2750,134 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 219183240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &223345241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223345242}
+  - component: {fileID: 223345243}
+  m_Layer: 0
+  m_Name: DeathMatchBackgroundMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223345242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223345241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1251331561}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &223345243
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223345241}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bd7b6394da9a79349ad44e50d953816c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.966
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &224040673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6419,6 +6547,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 1023488291343208754, guid: 1539092364256d042a19db7f8a2d9c49,
     type: 3}
   m_PrefabInstance: {fileID: 1618846839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &539450849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1796965536713344254, guid: 013866f157bff1d499533033f96d9bc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1552219610}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &539778319
 PrefabInstance:
@@ -17450,6 +17584,7 @@ Transform:
   - {fileID: 509294380}
   - {fileID: 1101195661}
   - {fileID: 1183180341}
+  - {fileID: 223345242}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20232,6 +20367,11 @@ PrefabInstance:
       propertyPath: _shealdAudio
       value: 
       objectReference: {fileID: 749114194}
+    - target: {fileID: 5923277633480131136, guid: 013866f157bff1d499533033f96d9bc9,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8419831450770958020, guid: 013866f157bff1d499533033f96d9bc9,
         type: 3}
       propertyPath: _mainListener
@@ -21841,11 +21981,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 953688199}
   - {fileID: 803074313}
   - {fileID: 1070438449}
   - {fileID: 1844611585}
   - {fileID: 1028391515}
+  - {fileID: 953688199}
   - {fileID: 978104726}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -21864,45 +22004,111 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - _waveSettings:
-    - _spawner: {fileID: 803074311}
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 68932699}
       _spawnDelay: 5
-    - _spawner: {fileID: 1028391513}
-      _spawnDelay: 3
+    - _spawner:
+      - {fileID: 953688197}
+      _spawnDelay: 2
+    - _spawner:
+      - {fileID: 1028391513}
+      _spawnDelay: 5
   - _waveSettings:
-    - _spawner: {fileID: 803074311}
-      _spawnDelay: 6
-    - _spawner: {fileID: 1028391513}
+    - _spawner:
+      - {fileID: 953688197}
       _spawnDelay: 4
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 1028391513}
+      - {fileID: 68932699}
+      _spawnDelay: 5
+    - _spawner:
+      - {fileID: 1527569373}
+      _spawnDelay: 2
   - _waveSettings:
-    - _spawner: {fileID: 803074311}
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 68932699}
+      _spawnDelay: 6
+    - _spawner:
+      - {fileID: 1028391513}
       _spawnDelay: 7
-    - _spawner: {fileID: 1028391513}
+    - _spawner:
+      - {fileID: 953688197}
+      _spawnDelay: 4
+    - _spawner:
+      - {fileID: 1527569373}
+      _spawnDelay: 4
+    - _spawner:
+      - {fileID: 1028391513}
       _spawnDelay: 7
-    - _spawner: {fileID: 953688197}
-      _spawnDelay: 2
-    - _spawner: {fileID: 953688197}
-      _spawnDelay: 2
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 1028391513}
+      - {fileID: 68932699}
+      _spawnDelay: 7
   - _waveSettings: []
-  - _waveSettings:
-    - _spawner: {fileID: 803074311}
-      _spawnDelay: 10
-    - _spawner: {fileID: 68932699}
-      _spawnDelay: 10
-    - _spawner: {fileID: 1527569373}
-      _spawnDelay: 2
-    - _spawner: {fileID: 1028391513}
-      _spawnDelay: 10
-    - _spawner: {fileID: 1527569373}
-      _spawnDelay: 2
-    - _spawner: {fileID: 953688197}
-      _spawnDelay: 2
-    - _spawner: {fileID: 953688197}
-      _spawnDelay: 2
+  - _waveSettings: []
   - _waveSettings: []
   - _waveSettings: []
   - _waveSettings:
-    - _spawner: {fileID: 978104727}
+    - _spawner:
+      - {fileID: 978104727}
       _spawnDelay: 2
+  - _waveSettings: []
+  - _waveSettings: []
+  - _waveSettings: []
+  - _waveSettings: []
+  - _waveSettings: []
+  - _waveSettings:
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 68932699}
+      _spawnDelay: 6
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 68932699}
+      _spawnDelay: 5
+    - _spawner:
+      - {fileID: 803074311}
+      - {fileID: 68932699}
+      _spawnDelay: 4
+    - _spawner:
+      - {fileID: 1527569373}
+      _spawnDelay: 2
+    - _spawner:
+      - {fileID: 1527569373}
+      _spawnDelay: 3
+    - _spawner:
+      - {fileID: 1527569373}
+      _spawnDelay: 4
+  - _waveSettings: []
+  - _waveSettings:
+    - _spawner:
+      - {fileID: 953688197}
+      _spawnDelay: 2
+    - _spawner:
+      - {fileID: 1028391513}
+      _spawnDelay: 5
+    - _spawner:
+      - {fileID: 953688197}
+      _spawnDelay: 4
+    - _spawner:
+      - {fileID: 1028391513}
+      _spawnDelay: 5
+    - _spawner:
+      - {fileID: 953688197}
+      _spawnDelay: 6
+  _spawnersArray:
+  - {fileID: 803074311}
+  - {fileID: 68932699}
+  - {fileID: 1527569373}
+  - {fileID: 1028391513}
+  - {fileID: 953688197}
+  _interactPanel: {fileID: 539450849}
+  _mainBackgroundMusic: {fileID: 1945640195}
+  _deathMatchBackgroundMusic: {fileID: 223345243}
 --- !u!1001 &1661034906
 PrefabInstance:
   m_ObjectHideFlags: 0

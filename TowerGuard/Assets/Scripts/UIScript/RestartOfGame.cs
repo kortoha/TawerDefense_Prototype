@@ -45,6 +45,7 @@ public class RestartOfGame : MonoBehaviour
         _brightening.SetActive(true);
         _scorePanel.SetActive(false);
         _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);
+        ArrowsDamage.Instance.ArrowsDestroy();
 
         Invoke("LoadScene", _timeToRestart);
         _restartButton.SetActive(false);

@@ -68,6 +68,7 @@ public class PauseMenu : MonoBehaviour
             _interactionPanel.SetActive(false);
             _coinsScore.SetActive(false);
             MainTower.Instance.TowerDestroy();
+            ArrowsDamage.Instance.ArrowsDestroy();
             Invoke("LoadScene", _timeToRestart);
             _brightening.SetActive(true);
             _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);

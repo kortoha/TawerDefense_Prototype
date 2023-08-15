@@ -22,7 +22,6 @@ public class StartOfBattle : MonoBehaviour
     [SerializeField] private GameObject _logo;
     [SerializeField] private AudioSource _selectSound;
 
-
     public void StartOfGame()
     {
         _selectSound.Play();

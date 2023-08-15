@@ -23,7 +23,7 @@ public class MainTower : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);      
     }
 
     public float TakeDamage(float damage)
