@@ -20167,6 +20167,21 @@ PrefabInstance:
       propertyPath: _ultTarget
       value: 
       objectReference: {fileID: 909356616}
+    - target: {fileID: 1796965536713344254, guid: 013866f157bff1d499533033f96d9bc9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833111324870762216, guid: 013866f157bff1d499533033f96d9bc9,
+        type: 3}
+      propertyPath: m_Text
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907941754421712865, guid: 013866f157bff1d499533033f96d9bc9,
+        type: 3}
+      propertyPath: m_Text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2036562771003257590, guid: 013866f157bff1d499533033f96d9bc9,
         type: 3}
       propertyPath: _freezSound
@@ -20197,6 +20212,11 @@ PrefabInstance:
       propertyPath: _towersHealthBar
       value: 
       objectReference: {fileID: 1342085468}
+    - target: {fileID: 3505005154761348948, guid: 013866f157bff1d499533033f96d9bc9,
+        type: 3}
+      propertyPath: m_Text
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3930756987603128668, guid: 013866f157bff1d499533033f96d9bc9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

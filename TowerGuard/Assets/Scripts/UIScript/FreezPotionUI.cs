@@ -13,7 +13,7 @@ public class FreezPotionUI : MonoBehaviour
     [SerializeField] private AudioSource _freezSound;
 
     private float _freezingTime = 4f;
-    private int _costOfFreez = 7;
+    private int _costOfFreez = 5;
     
 
     private void Update()
@@ -28,8 +28,10 @@ public class FreezPotionUI : MonoBehaviour
             if (EarningMoney.Instance.scoreOfCoins >= _costOfFreez)
             {
                 EarningMoney.Instance.Buing(_costOfFreez);
-
-                _freezSound.Play();
+                if (_freezSound.enabled)
+                {
+                    _freezSound.Play();
+                }
                 Time.timeScale = 0.5f;
 
                 yield return new WaitForSeconds(_freezingTime);

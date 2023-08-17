@@ -56,7 +56,11 @@ public class TowerShealdUI : MonoBehaviour
         if(!MainTower.Instance.isTowerHasSheald)
         {
             StartCoroutine(TowerSheald());
-            _shealdAudio.Play();
+
+            if (_shealdAudio.enabled)
+            {
+                _shealdAudio.Play();
+            }
         }
     }
 

@@ -13,8 +13,8 @@ public class MinotaurusDamage : EnemyDamage
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public new float health = 500;
-    public new float maxHealth = 500;
+    public float health = 500;
+    public float maxHealth = 500;
 
     private float _attackInterval = 2f;
     private float _timeToDestroySelf = 5f;

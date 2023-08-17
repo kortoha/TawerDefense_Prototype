@@ -24,7 +24,10 @@ public class StartOfBattle : MonoBehaviour
 
     public void StartOfGame()
     {
-        _selectSound.Play();
+        if (_selectSound.enabled)
+        {
+           _selectSound.Play();
+        }
         _camerasAnimator.SetTrigger(CAMERA_BATTLE_MOD);
         
         _towersHealthBar.SetActive(true);

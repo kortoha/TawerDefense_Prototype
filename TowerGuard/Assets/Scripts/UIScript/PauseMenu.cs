@@ -30,7 +30,10 @@ public class PauseMenu : MonoBehaviour
 
         if (_isPaused)
         {
-            _selectSound.Play();
+            if (_selectSound.enabled)
+            {
+                _selectSound.Play();
+            }
             _menuPanel.SetActive(true);
             _restartButton.SetActive(true);
             _backgroundFade.SetActive(true);
@@ -42,7 +45,10 @@ public class PauseMenu : MonoBehaviour
         
          if(!_isPaused)
         {
-            _selectSound.Play();
+            if (_selectSound.enabled)
+            {
+                _selectSound.Play();
+            }
             _menuPanel.SetActive(false);
             _restartButton.SetActive(false);
             _backgroundFade.SetActive(false);
@@ -57,7 +63,10 @@ public class PauseMenu : MonoBehaviour
     {
         if(MainTower.Instance != null)
         {
-            _selectSound.Play();
+            if (_selectSound.enabled)
+            {
+                _selectSound.Play();
+            };
             _restartButton.SetActive(false);
             _menuPanel.SetActive(false);
             _backgroundFade.SetActive(false);

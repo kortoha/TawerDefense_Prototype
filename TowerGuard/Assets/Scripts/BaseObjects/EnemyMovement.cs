@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Vector3 _target;
-    private float _rotationSpeed = 2.0f;
 
     private void Start()
     {

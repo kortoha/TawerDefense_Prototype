@@ -39,7 +39,10 @@ public class RestartOfGame : MonoBehaviour
 
     public void Restart()
     {
-        _selectSound.Play();
+        if (_selectSound.enabled)
+        {
+            _selectSound.Play();
+        }
         _soundButton.SetActive(false);
         _interactionPanel.SetActive(false);
         _brightening.SetActive(true);

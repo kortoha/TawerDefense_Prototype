@@ -46,13 +46,19 @@ public class GameInteraction : MonoBehaviour
                 if (!_isAimCreated)
                 {
                     _currentVisualAim = Instantiate(_visualAim, worldPos, Quaternion.identity);
-                    _touchSound.Play();
+                    if (_touchSound.enabled)
+                    {
+                        _touchSound.Play();
+                    }
                     _isAimCreated = true;
                 }
                 else
                 {
                     _currentVisualAim.transform.position = worldPos;
-                    _touchSound.Play();
+                    if (_touchSound.enabled)
+                    {
+                        _touchSound.Play();
+                    }
                 }
             }
         }

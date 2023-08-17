@@ -13,7 +13,7 @@ public class HealingPotionUI : MonoBehaviour
     [SerializeField] private AudioSource _healSound;
 
     private float _healingOnce = 300;
-    private int _costOfHeal = 20;
+    private int _costOfHeal = 15;
 
     private Animator _towerAnimator;
 
@@ -38,7 +38,11 @@ public class HealingPotionUI : MonoBehaviour
                 MainTower.Instance.towersHealth += _healingOnce;
 
                 _towerAnimator.SetTrigger(HEAL_ANIM);
-                _healSound.Play();
+
+                if (_healSound.enabled)
+                {
+                   _healSound.Play();
+                }
 
                 if (MainTower.Instance.towersHealth > MainTower.Instance.maxHealth)
                 {

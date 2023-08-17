@@ -16,7 +16,7 @@ public class ArrowUltUI : MonoBehaviour
 
     private bool _isUltOnScene = false;
     private float _timeToWait = 2f;
-    private int _costOfUlt = 40;
+    private int _costOfUlt = 30;
     private Vector3 _targetPosition;
 
     private void Start()
@@ -38,7 +38,10 @@ public class ArrowUltUI : MonoBehaviour
                 EarningMoney.Instance.Buing(_costOfUlt);
                 _isUltOnScene = true;
                 GameObject ult = Instantiate(_ult, _targetPosition, Quaternion.identity);
-                _ultSound.Play();
+                if (_ultSound.enabled)
+                {
+                    _ultSound.Play();
+                }
                 yield return new WaitForSeconds(_timeToWait);
                 Destroy(ult);
                 _isUltOnScene = false;            

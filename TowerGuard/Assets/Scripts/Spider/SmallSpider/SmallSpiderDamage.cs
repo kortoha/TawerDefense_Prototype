@@ -14,8 +14,8 @@ public class SmallSpiderDamage : EnemyDamage
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public new float health = 50;
-    public new float maxHealth = 50;
+    public float health = 50;
+    public float maxHealth = 50;
 
     private float _attackInterval = 0.3f;
     private float _timeToDestroySelf = 5f;

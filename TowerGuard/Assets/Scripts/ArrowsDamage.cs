@@ -7,7 +7,7 @@ public class ArrowsDamage : MonoBehaviour
 {
     private const string ENEMY_LAYER = "Enemy";
 
-    private float _damage = 6f;
+    private float _damage = 7f;
 
     public static ArrowsDamage Instance { get; private set; }
 
@@ -66,7 +66,10 @@ public class ArrowsDamage : MonoBehaviour
     {
         if (_activeDamageCoroutines.ContainsKey(enemy))
         {
-            StopCoroutine(_activeDamageCoroutines[enemy]);
+            if (_activeDamageCoroutines[enemy] != null)
+            {
+                StopCoroutine(_activeDamageCoroutines[enemy]);
+            }
             _activeDamageCoroutines.Remove(enemy);
         }
     }
