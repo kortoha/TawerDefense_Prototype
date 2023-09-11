@@ -2,21 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerShealdUI : MonoBehaviour
+public class TowerShealdUI : BaseItemUI
 {
     private const string NO_MONEY = "NoMoney";
 
-    [SerializeField] private Animator _coinsAnimator;
-    [SerializeField] private Sprite _haveMoney;
-    [SerializeField] private Sprite _haveNoMoney;
-    [SerializeField] private Image _shealdImage;
     [SerializeField] private GameObject _sheald;
-    [SerializeField] private AudioSource _shealdAudio;
-
 
     private Vector3 _target;
     private float _timeOfProtect = 5f;
-    private int _costOfSheald = 10;
 
     private void Start()
     {
@@ -25,16 +18,16 @@ public class TowerShealdUI : MonoBehaviour
 
     private void Update()
     {
-        SpriteChangeOver();
+        SpriteChangeOver(itemImage);
     }
 
     private IEnumerator TowerSheald()
     {
         if (MainTower.Instance != null)
         {
-            if (EarningMoney.Instance.scoreOfCoins >= _costOfSheald)
+            if (EarningMoney.Instance.scoreOfCoins >= itemSO.cost)
             {
-                EarningMoney.Instance.Buing(_costOfSheald);
+                EarningMoney.Instance.Buing(itemSO.cost);
 
                 GameObject sheald = Instantiate(_sheald, _target, Quaternion.identity);
                 MainTower.Instance.isTowerHasSheald = true;
@@ -46,7 +39,7 @@ public class TowerShealdUI : MonoBehaviour
             }
             else
             {
-                _coinsAnimator.SetTrigger(NO_MONEY);
+                coinsAnimator.SetTrigger(NO_MONEY);
             }
         }
     }
@@ -57,22 +50,15 @@ public class TowerShealdUI : MonoBehaviour
         {
             StartCoroutine(TowerSheald());
 
-            if (_shealdAudio.enabled)
+            if (itemSound.enabled)
             {
-                _shealdAudio.Play();
+                itemSound.Play();
             }
         }
     }
 
-    private void SpriteChangeOver()
+    public override void SpriteChangeOver(Image image)
     {
-        if (EarningMoney.Instance.scoreOfCoins < _costOfSheald)
-        {
-            _shealdImage.sprite = _haveNoMoney;
-        }
-        else
-        {
-            _shealdImage.sprite = _haveMoney;
-        }
+        base.SpriteChangeOver(image);
     }
 }

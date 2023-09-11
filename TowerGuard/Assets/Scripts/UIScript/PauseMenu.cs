@@ -61,7 +61,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        if(MainTower.Instance != null)
+        if (MainTower.Instance != null)
         {
             if (_selectSound.enabled)
             {
@@ -71,13 +71,17 @@ public class PauseMenu : MonoBehaviour
             _menuPanel.SetActive(false);
             _backgroundFade.SetActive(false);
             _towersHealthBar.SetActive(false);
-            Destroy(_scorePanel);
+
+            if (_scorePanel != null)
+            {
+                Destroy(_scorePanel);
+            }
+
             _soundButton.SetActive(false);
             _pauseButton.SetActive(false);
             _interactionPanel.SetActive(false);
             _coinsScore.SetActive(false);
             MainTower.Instance.TowerDestroy();
-            ArrowsDamage.Instance.ArrowsDestroy();
             Invoke("LoadScene", _timeToRestart);
             _brightening.SetActive(true);
             _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);

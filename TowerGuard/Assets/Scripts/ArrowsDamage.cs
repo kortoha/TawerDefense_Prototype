@@ -12,6 +12,7 @@ public class ArrowsDamage : MonoBehaviour
     public static ArrowsDamage Instance { get; private set; }
 
     private float _attackInterval = 0.1f;
+
     private Dictionary<EnemyDamage, Coroutine> _activeDamageCoroutines = new Dictionary<EnemyDamage, Coroutine>();
 
     private void Awake()
@@ -23,7 +24,6 @@ public class ArrowsDamage : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,10 +89,5 @@ public class ArrowsDamage : MonoBehaviour
     public void DeathMod()
     {
         _damage += 54;
-    }
-
-    public void ArrowsDestroy()
-    {
-        Destroy(gameObject);
     }
 }

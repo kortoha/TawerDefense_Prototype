@@ -1,19 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealingPotionUI : MonoBehaviour
+public class HealingPotionUI : BaseItemUI
 {
     private const string NO_MONEY = "NoMoney";
     private const string HEAL_ANIM = "IsHeal";
 
-    [SerializeField] private Animator _coinsAnimator;
-    [SerializeField] private Sprite _haveMoney;
-    [SerializeField] private Sprite _haveNoMoney;
-    [SerializeField] private Image _healImage;
-    [SerializeField] private AudioSource _healSound;
 
     private float _healingOnce = 300;
-    private int _costOfHeal = 15;
 
     private Animator _towerAnimator;
 
@@ -24,24 +18,24 @@ public class HealingPotionUI : MonoBehaviour
 
     private void Update()
     {
-        SpriteChangeOver();
+        SpriteChangeOver(itemImage);
     }
 
     public void HealingOfTower()
     {
         if (MainTower.Instance != null)
         {
-            if (EarningMoney.Instance.scoreOfCoins >= _costOfHeal)
+            if (EarningMoney.Instance.scoreOfCoins >= itemSO.cost)
             {
-                EarningMoney.Instance.Buing(_costOfHeal);
+                EarningMoney.Instance.Buing(itemSO.cost);
 
                 MainTower.Instance.towersHealth += _healingOnce;
 
                 _towerAnimator.SetTrigger(HEAL_ANIM);
 
-                if (_healSound.enabled)
+                if (itemSound.enabled)
                 {
-                   _healSound.Play();
+                   itemSound.Play();
                 }
 
                 if (MainTower.Instance.towersHealth > MainTower.Instance.maxHealth)
@@ -51,20 +45,13 @@ public class HealingPotionUI : MonoBehaviour
             }
             else
             {
-                _coinsAnimator.SetTrigger(NO_MONEY);
+                coinsAnimator.SetTrigger(NO_MONEY);
             }
         }
     }
 
-    private void SpriteChangeOver()
+    public override void SpriteChangeOver(Image image)
     {
-        if(EarningMoney.Instance.scoreOfCoins < _costOfHeal)
-        {
-            _healImage.sprite = _haveNoMoney;
-        }
-        else
-        {
-            _healImage.sprite = _haveMoney;
-        }
+        base.SpriteChangeOver(image);
     }
 }

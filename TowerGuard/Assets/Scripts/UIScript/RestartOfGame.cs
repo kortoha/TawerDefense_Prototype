@@ -33,7 +33,10 @@ public class RestartOfGame : MonoBehaviour
             _pauseButton.SetActive(false);
             _coinsScore.SetActive(false);
             _interactionPanel.SetActive(false);
-            _scorePanel.SetActive(true);
+            if(_scorePanel != null)
+            {
+                _scorePanel.SetActive(true);
+            }
         }
     }
 
@@ -48,7 +51,6 @@ public class RestartOfGame : MonoBehaviour
         _brightening.SetActive(true);
         _scorePanel.SetActive(false);
         _brighteningAnimator.SetTrigger(NAME_OF_FAIDING_TRIGER);
-        ArrowsDamage.Instance.ArrowsDestroy();
 
         Invoke("LoadScene", _timeToRestart);
         _restartButton.SetActive(false);
@@ -66,7 +68,7 @@ public class RestartOfGame : MonoBehaviour
 
     private void TowerDestroySound()
     {
-        if (!_isSoundPlay)
+        if (!_isSoundPlay && _towerDestroySound.enabled)
         {
             _towerDestroySound.Play();
             _isSoundPlay = true;

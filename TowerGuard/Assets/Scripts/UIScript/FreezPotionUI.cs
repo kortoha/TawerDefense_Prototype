@@ -2,35 +2,28 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FreezPotionUI : MonoBehaviour
+public class FreezPotionUI : BaseItemUI
 {
     private const string NO_MONEY = "NoMoney";
 
-    [SerializeField] private Animator _coinsAnimator;
-    [SerializeField] private Sprite _haveMoney;
-    [SerializeField] private Sprite _haveNoMoney;
-    [SerializeField] private Image _freezImage;
-    [SerializeField] private AudioSource _freezSound;
-
     private float _freezingTime = 4f;
-    private int _costOfFreez = 5;
     
 
     private void Update()
     {
-        SpriteChangeOver();
+        SpriteChangeOver(itemImage);
     }
 
     public IEnumerator FreezingTime()
     {
         if (MainTower.Instance != null)
         {
-            if (EarningMoney.Instance.scoreOfCoins >= _costOfFreez)
+            if (EarningMoney.Instance.scoreOfCoins >= itemSO.cost)
             {
-                EarningMoney.Instance.Buing(_costOfFreez);
-                if (_freezSound.enabled)
+                EarningMoney.Instance.Buing(itemSO.cost);
+                if (itemSound.enabled)
                 {
-                    _freezSound.Play();
+                    itemSound.Play();
                 }
                 Time.timeScale = 0.5f;
 
@@ -40,21 +33,14 @@ public class FreezPotionUI : MonoBehaviour
             }
             else
             {
-                _coinsAnimator.SetTrigger(NO_MONEY);
+                coinsAnimator.SetTrigger(NO_MONEY);
             }
         }
     }
 
-    private void SpriteChangeOver()
+    public override void SpriteChangeOver(Image image)
     {
-        if (EarningMoney.Instance.scoreOfCoins < _costOfFreez)
-        {
-            _freezImage.sprite = _haveNoMoney;
-        }
-        else
-        {
-            _freezImage.sprite = _haveMoney;
-        }
+        base.SpriteChangeOver(image);
     }
 
     public void StartOfFreez()
