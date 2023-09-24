@@ -60,9 +60,9 @@ public class WaveManager : MonoBehaviour
         {
             if (MainTower.Instance != null)
             {
-                foreach (var item in _spawnersArray)
+                for (int i = 0; i < 5; i++)
                 {
-                    item.SetActive(true);
+                    _spawnersArray[i].SetActive(true);
                 }
                 _interactPanel.SetActive(false);
                 _mainBackgroundMusic.SetActive(false);

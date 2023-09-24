@@ -1,11 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using System;
 
 public class SpiderDamage : EnemyDamage
 {
     [SerializeField] private float _spiderDamage = 50;
-
 
     private SpiderMovement _spiderMovement;
     private Collider _collider;

@@ -1,33 +1,32 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
-public class GoblinsDamage : EnemyDamage
+public class CatapultDamage : EnemyDamage
 {
-    [SerializeField] private float _goblinsDamage = 20;
+    [SerializeField] private float _catapultDamage = 50;
 
-    private GoblinsMovement _goblinsMovement;
-    private Animator _animator;
+    private CatapultMovement _catapultMovement;
     private Collider _collider;
 
     private Coroutine _enemysAttackCoroutine;
 
     public bool isAttacking { get; private set; }
-    public float health = 100;
-    public float maxHealth = 100;
+    public float health = 300;
+    public float maxHealth = 300;
 
-    private float _attackInterval = 1f;
+    private float _attackInterval = 7f;
     private float _timeToDestroySelf = 5f;
     private bool _isScoreUpOnce = false;
-    private int _deathMoney = 1;
-    private int _deathScoreCount = 1;
+    private int _deathMoney = 20;
+    private int _deathScoreCount = 20;
 
 
     private void Start()
     {
-        _goblinsMovement = GetComponent<GoblinsMovement>();
+        _catapultMovement = GetComponent<CatapultMovement>();
         _collider = GetComponent<Collider>();
-        _goblinsMovement.ReachedTargetEvent += OnReachedTarget;
-        _goblinsMovement.RestingState += OnRestingState;
+        _catapultMovement.ReachedTargetEvent += OnReachedTarget;
+        _catapultMovement.RestingState += OnRestingState;
     }
 
     private void Update()
@@ -41,7 +40,7 @@ public class GoblinsDamage : EnemyDamage
     private void OnRestingState()
     {
         StopAttack();
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
+        _catapultMovement.ReachedTargetEvent -= OnReachedTarget;
     }
 
     private void OnReachedTarget()
@@ -51,13 +50,13 @@ public class GoblinsDamage : EnemyDamage
 
     public new IEnumerator SetDamage(float attackInterval, MainTower mainTower)
     {
-        _goblinsMovement.LookAtTower();
+        _catapultMovement.LookAtTower();
 
         isAttacking = true;
         while (mainTower != null && health > 0)
         {
-            mainTower.TakeDamage(_goblinsDamage);
             yield return new WaitForSeconds(attackInterval);
+            mainTower.TakeDamage(_catapultDamage);
         }
         isAttacking = false;
         _enemysAttackCoroutine = null;
@@ -96,7 +95,7 @@ public class GoblinsDamage : EnemyDamage
 
     public new IEnumerator Death()
     {
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
+        _catapultMovement.ReachedTargetEvent -= OnReachedTarget;
         StopAttack();
         yield return new WaitForSeconds(_timeToDestroySelf);
         Destroy(gameObject);
@@ -105,7 +104,7 @@ public class GoblinsDamage : EnemyDamage
 
     private void OnDestroy()
     {
-        _goblinsMovement.ReachedTargetEvent -= OnReachedTarget;
-        _goblinsMovement.RestingState -= OnRestingState;
+        _catapultMovement.ReachedTargetEvent -= OnReachedTarget;
+        _catapultMovement.RestingState -= OnRestingState;
     }
 }

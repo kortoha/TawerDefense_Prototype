@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2007180ecc72d0342a1806111cbfb69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spiderDamage: 50
+  _spiderDamage: 30
   health: 300
   maxHealth: 300
 --- !u!54 &8264957492421106303

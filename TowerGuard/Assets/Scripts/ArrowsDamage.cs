@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,6 +87,16 @@ public class ArrowsDamage : MonoBehaviour
 
     public void DeathMod()
     {
-        _damage += 54;
+        _damage += 53;
+    }
+
+    public void FreezDamageUp()
+    {
+        _damage *= 2;
+    }
+
+    public void FreezDamageDown()
+    {
+        _damage /= 2;
     }
 }

@@ -7,7 +7,8 @@ public class FreezPotionUI : BaseItemUI
     private const string NO_MONEY = "NoMoney";
 
     private float _freezingTime = 4f;
-    
+
+    public bool isFreez { get; private set; } = false;
 
     private void Update()
     {
@@ -18,18 +19,24 @@ public class FreezPotionUI : BaseItemUI
     {
         if (MainTower.Instance != null)
         {
-            if (EarningMoney.Instance.scoreOfCoins >= itemSO.cost)
+            if (EarningMoney.Instance.scoreOfCoins >= itemSO.cost && !isFreez)
             {
                 EarningMoney.Instance.Buing(itemSO.cost);
                 if (itemSound.enabled)
                 {
                     itemSound.Play();
                 }
+
                 Time.timeScale = 0.5f;
+                ArrowsDamage.Instance.FreezDamageUp();
+                isFreez = true;
 
                 yield return new WaitForSeconds(_freezingTime);
 
                 Time.timeScale = 1;
+
+                isFreez = false;
+                ArrowsDamage.Instance.FreezDamageDown();
             }
             else
             {

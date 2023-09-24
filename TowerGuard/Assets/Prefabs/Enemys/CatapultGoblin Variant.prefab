@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8420911903654420718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898769568198904180, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199798505327540156, guid: e212967a7be5ca349a661a10a90f168f,
+        type: 3}
+      propertyPath: m_Name
+      value: CatapultGoblin Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8644291464624765527, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 4276696272590990915, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 5348280391859705635, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 3766955156125091150, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 9019802670203845188, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 938777477745262358, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 5971916370272951959, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1658633352357319365, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 875025063275454015, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    - {fileID: 5971916370280246529, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e212967a7be5ca349a661a10a90f168f, type: 3}
